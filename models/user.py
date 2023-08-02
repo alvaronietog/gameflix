@@ -12,7 +12,7 @@ class User(Model):
     last_name: str
     address: str
     email: str
-    _ranking: int = field(init=False, default=0)
+    _ranking: int = 0
     picture: str = ''
     comments: list[ObjectId] = field(default_factory=list)
     admin: bool = False

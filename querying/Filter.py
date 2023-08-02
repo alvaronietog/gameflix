@@ -5,7 +5,7 @@ from bson import ObjectId
 
 class Operator:
     equal = '$eq'
-    not_equal = '$neq'
+    not_equal = '$ne'
     greater = '$gt'
     greater_equal = '$gte'
     less = '$lt'

@@ -10,7 +10,7 @@ from models.model import Model
 class Comment(Model):
     user: ObjectId
     game: ObjectId
-    _rate: int = field(init=False, default=0)
+    _rate: int = 0
     comment: str = ''
 
     @property

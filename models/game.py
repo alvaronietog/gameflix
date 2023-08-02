@@ -13,7 +13,7 @@ class Game(Model):
     developers: str = ''
     publisher: str = ''
     picture: str = ''
-    votes: int = field(init=False, default=0)
+    votes: int = 0
     _ranking: int = field(init=False, default=0)
     comments: list[ObjectId] = field(default_factory=list)
 

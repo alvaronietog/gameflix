@@ -27,11 +27,29 @@ class Manager:
     @classmethod
     def create_many(cls, models: list[_model]):
         new_documents = [model.to_dict() for model in models]
-        return cls._collection.insert_many(new_documents).inserted_id
+        return cls._collection.insert_many(new_documents).inserted_ids
 
     @classmethod
-    def update_one(cls):
-        return cls
+    def update_one(cls, _filter: Filter, updated_values: dict):
+        """
+        This method will make a patch in the document that satisfy the filter
+        :param _filter: filter to find the entity to update
+        :param updated_values: dict with the new values of the entity
+        :return: mongo response
+        """
+        return cls._collection.update_one(_filter.formatted_filter,
+                                          {'$set': updated_values})
+
+    @classmethod
+    def update_many(cls, _filter: Filter, updated_values: dict):
+        """
+        This method will make a patch in the document that satisfy the filter
+        :param _filter: filter to find the entities to update
+        :param updated_values: dict with the new values of the entity
+        :return: mongo response
+        """
+        return cls._collection.update_one(_filter.formatted_filter,
+                                          {'$set': updated_values})
 
     @classmethod
     def delete_one(cls, _filter: Filter):
