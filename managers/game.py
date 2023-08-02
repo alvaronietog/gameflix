@@ -1,11 +1,8 @@
-from main import db
+from app import db
+from managers.manager import Manager
 from models.game import Game
 
 
-class GameManager:
-    __collection = 'game'
-    __model = Game
-
-    def create(self, **kwargs):
-        collection = db[self.__collection]
-        print(kwargs)
+class GameManager(Manager):
+    _collection = db.games
+    _model = Game
