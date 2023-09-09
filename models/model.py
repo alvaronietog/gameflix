@@ -1,11 +1,10 @@
-import json
-from dataclasses import dataclass
+from dataclasses import dataclass, asdict
 
 
 @dataclass
 class Model:
     def to_dict(self) -> dict:
-        return json.loads(self.to_json())
+        return asdict(self)
 
-    def to_json(self) -> str:
-        return json.dumps(self.__dict__)
+    def from_dict(self, instance: dict):
+        return Model(**instance)
